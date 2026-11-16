@@ -1,0 +1,10 @@
+
+# C Compiler produced files
+*.exe
+*.out
+*.o
+
+# data
+attendance_app
+attendance_data.txt
+.vscode/
