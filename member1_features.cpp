@@ -84,3 +84,14 @@ void viewAllAttendance(const std::vector<Student>& students) {
     }
     std::cout << "====================================================================\n";
 }
+
+// Helper: Save all records to file
+void saveRecordsToFile(const std::vector<Student>& students, const std::string& filename) {
+    std::ofstream outFile(filename);
+    if (!outFile) return;
+
+    for (const auto& s : students) {
+        outFile << s.rollNo << "|" << s.name << "|" << s.department << "|"
+                << s.totalClasses << "|" << s.attendedClasses << "\n";
+    }
+}
