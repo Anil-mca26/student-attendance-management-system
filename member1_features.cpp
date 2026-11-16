@@ -58,3 +58,29 @@ void markAttendance(std::vector<Student>& students) {
     saveRecordsToFile(students);
     std::cout << "Attendance recorded for " << date << "!\n";
 }
+
+
+// Feature 3: View All Students & Attendance Counts
+void viewAllAttendance(const std::vector<Student>& students) {
+    if (students.empty()) {
+        std::cout << "\nNo attendance records found.\n";
+        return;
+    }
+
+    std::cout << "\n====================================================================\n";
+    std::cout << std::left << std::setw(10) << "Roll No"
+              << std::setw(22) << "Name"
+              << std::setw(15) << "Department"
+              << std::setw(10) << "Attended"
+              << std::setw(10) << "Total" << "\n";
+    std::cout << "====================================================================\n";
+
+    for (const auto& s : students) {
+        std::cout << std::left << std::setw(10) << s.rollNo
+                  << std::setw(22) << s.name
+                  << std::setw(15) << s.department
+                  << std::setw(10) << s.attendedClasses
+                  << std::setw(10) << s.totalClasses << "\n";
+    }
+    std::cout << "====================================================================\n";
+}
