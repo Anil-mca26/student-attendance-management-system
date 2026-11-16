@@ -2,6 +2,8 @@
 #include <iostream>
 #include <iomanip>
 #include <limits>
+#include <fstream>
+#include <sstream>
 
 // Feature 1: Add / Register New Student
 void addStudent(std::vector<Student>& students) {

@@ -12,9 +12,15 @@ struct Student {
     int attendedClasses;
 };
 
+// Person 1 Features (Branch: feature-member1)
+void addStudent(std::vector<Student>& students);
+void markAttendance(std::vector<Student>& students);
+void viewAllAttendance(const std::vector<Student>& students);
 
 
 
+// File Persistence Helpers
+void saveRecordsToFile(const std::vector<Student>& students, const std::string& filename = "attendance_data.txt");
 
 
 
