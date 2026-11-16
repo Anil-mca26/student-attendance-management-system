@@ -3,7 +3,7 @@
 #include <limits>
 
 // Shared version banner (Modify this same line on both branches to create a merge conflict)
-const std::string APP_VERSION = "v2.0 - Full Release (Member 1 + Member 2)";
+const std::string APP_VERSION = "v1.1 - Member 1 Features Implemneted";
 
 int main(){
     std::vector<Student> students;
