@@ -94,3 +94,37 @@ void updateAttendanceRecord(std::vector<Student>& students) {
     }
     std::cout << "Student with Roll Number " << targetRoll << " not found.\n";
 }
+
+// Helper: Save all records to file
+void saveRecordsToFile(const std::vector<Student>& students, const std::string& filename) {
+    std::ofstream outFile(filename);
+    if (!outFile) return;
+
+    for (const auto& s : students) {
+        outFile << s.rollNo << "|" << s.name << "|" << s.department << "|"
+                << s.totalClasses << "|" << s.attendedClasses << "\n";
+    }
+}
+
+// Helper: Load records from file at startup
+void loadRecordsFromFile(std::vector<Student>& students, const std::string& filename) {
+    std::ifstream inFile(filename);
+    if (!inFile) return;
+
+    students.clear();
+    std::string line;
+    while (std::getline(inFile, line)) {
+        if (line.empty()) continue;
+        std::stringstream ss(line);
+        std::string item;
+        Student s;
+
+        std::getline(ss, item, '|'); s.rollNo = std::stoi(item);
+        std::getline(ss, s.name, '|');
+        std::getline(ss, s.department, '|');
+        std::getline(ss, item, '|'); s.totalClasses = std::stoi(item);
+        std::getline(ss, item, '|'); s.attendedClasses = std::stoi(item);
+
+        students.push_back(s);
+    }
+}
