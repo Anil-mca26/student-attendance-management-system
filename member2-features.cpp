@@ -29,4 +29,30 @@ void searchStudentByRoll(const std::vector<Student>& students) {
         }
     }
     std::cout << "No student found with Roll Number " << targetRoll << ".\n";
-}git add member2_features.cpp
+}
+
+// Feature 5: Calculate Attendance Percentage & 75% Exam Eligibility Report
+void generateEligibilityReport(const std::vector<Student>& students) {
+    if (students.empty()) {
+        std::cout << "\nNo students registered.\n";
+        return;
+    }
+
+    std::cout << "\n==========================================================================\n";
+    std::cout << std::left << std::setw(10) << "Roll No"
+              << std::setw(22) << "Name"
+              << std::setw(15) << "Percentage"
+              << std::setw(20) << "Exam Status" << "\n";
+    std::cout << "==========================================================================\n";
+
+    for (const auto& s : students) {
+        double pct = (s.totalClasses > 0) ? (s.attendedClasses * 100.0 / s.totalClasses) : 0.0;
+        std::string status = (pct >= 75.0) ? "ELIGIBLE" : "SHORTAGE (<75%)";
+
+        std::cout << std::left << std::setw(10) << s.rollNo
+                  << std::setw(22) << s.name
+                  << std::fixed << std::setprecision(2) << std::setw(14) << pct << "%"
+                  << std::setw(20) << status << "\n";
+    }
+    std::cout << "==========================================================================\n";
+}
