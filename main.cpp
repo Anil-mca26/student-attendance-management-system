@@ -35,6 +35,10 @@ int main(){
             case 1: addStudent(students); break;
             case 2: markAttendance(students); break;
             case 3: viewAllAttendance(students); break;
+            
+            case 4: searchStudentByRoll(students); break;
+            case 5: generateEligibilityReport(students); break;
+            case 6: updateAttendanceRecord(students); break;
             case 0:
                 std::cout << "Exiting system. Goodbye!\n";
                 return 0;
@@ -42,5 +46,4 @@ int main(){
                 std::cout << "Invalid choice. Try again.\n";
         }
     }
-    return 0;
 }
