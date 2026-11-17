@@ -40,4 +40,5 @@ int main() {
                 std::cout << "Invalid choice. Try again.\n";
         }
     }
+    return 0;
 }
