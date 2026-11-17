@@ -56,3 +56,41 @@ void generateEligibilityReport(const std::vector<Student>& students) {
     }
     std::cout << "==========================================================================\n";
 }
+
+
+// Feature 6: Update / Correct Attendance Record
+void updateAttendanceRecord(std::vector<Student>& students) {
+    if (students.empty()) {
+        std::cout << "\nNo records available to update.\n";
+        return;
+    }
+
+    int targetRoll;
+    std::cout << "\n--- Update Attendance Record ---\n";
+    std::cout << "Enter Roll Number to update: ";
+    std::cin >> targetRoll;
+
+    for (auto& s : students) {
+        if (s.rollNo == targetRoll) {
+            int newTotal, newAttended;
+            std::cout << "Current Attendance for " << s.name << ": "
+                      << s.attendedClasses << "/" << s.totalClasses << "\n";
+            std::cout << "Enter corrected Total Classes: ";
+            std::cin >> newTotal;
+            std::cout << "Enter corrected Attended Classes: ";
+            std::cin >> newAttended;
+
+            if (newTotal < 0 || newAttended < 0 || newAttended > newTotal) {
+                std::cout << "Error: Invalid class counts entered.\n";
+                return;
+            }
+
+            s.totalClasses = newTotal;
+            s.attendedClasses = newAttended;
+            saveRecordsToFile(students);
+            std::cout << "Attendance updated and saved successfully!\n";
+            return;
+        }
+    }
+    std::cout << "Student with Roll Number " << targetRoll << " not found.\n";
+}
