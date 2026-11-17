@@ -12,6 +12,10 @@ struct Student {
     int attendedClasses;
 };
 
+// Person 1 Features (Branch: feature-member1)
+void addStudent(std::vector<Student>& students);
+void markAttendance(std::vector<Student>& students);
+void viewAllAttendance(const std::vector<Student>& students);
 
 
 // Person 2 Features (Branch: feature-member2)
